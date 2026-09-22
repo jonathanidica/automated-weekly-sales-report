@@ -49,7 +49,7 @@ def validate_df():
         'Quantity': [5, -1, 2],
         'Unit Price': [2.99, 0, 3],
         'Customer': [' John ', ' Jane ', None],
-        'Product': [' Product 1 ', ' Product 2 ', None],
+        'Product': [' Product 1 ', ' Product 2 ', ''],
         'Category': [' category 1 ', ' category 2 ', ' category 3 '],
         'Date': ['2023-01-01', '2023-01-02', '2023-01-03'],
         'Sales Person': ['Bob', 'Charlie', 'Joe'],
