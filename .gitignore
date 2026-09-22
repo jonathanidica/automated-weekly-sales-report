@@ -1,0 +1,42 @@
+# ==================================
+# OS generated files 
+# ==================================
+ehthumbs.db
+Thumbs.db
+._*
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+
+# ==================================
+# Python Runtime & Environments
+# ==================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# ==================================
+# Automation & Runtime Artifacts
+# ==================================
+# Log files
+*.log
+pip-log.txt
+
+# Local environment secrets
+.env
+.env.local
+
+# ==================================
+# Project Specific Entries
+# ==================================
+# Directories
+data/output
