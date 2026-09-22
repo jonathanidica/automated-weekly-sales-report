@@ -57,7 +57,7 @@ def normalize_category(df):
     return df
 
 def parse_date(date):
-    for fmt in ('%Y-%m-%d', '%m/%d/%Y', '%m-%d-%Y'):
+    for fmt in ('%Y-%m-%d', '%m/%d/%Y', '%Y/%m/%d', '%m-%d-%Y'):
         try:
             return pd.to_datetime(pd.Series([date]), format=fmt).dt.strftime('%Y-%m-%d')[0]
         except ValueError:
@@ -116,7 +116,7 @@ def validate_missing_fields(df):
         order_id = row['Order ID']
         file_name = row['Source File']
 
-        if pd.isnull(row).any():
+        if (pd.isnull(row) | row.eq('')).any():
             exception_ids.append(index)
             details = {
                 'Source File': [file_name],
@@ -338,20 +338,24 @@ def main(input_folder, output_file):
             final_df.to_excel(writer, sheet_name='Cleaned Data', index=False)
             exceptions_df.to_excel(writer, sheet_name='Exceptions', index=False)
             processing_log_df.to_excel(writer, sheet_name='Processing Log', index=False)
-
         logging.info(f"Report written to: {output_file}")
-        logging.info("Script successful.")
+
     except FileNotFoundError as fnfe:
         logging.error(fnfe)
+        return 1
     except KeyError as ke:
         logging.error(ke)
+        return 1
     except Exception as e:
-        logging.error(f"An unexpected error occurred: {e}", exc_info=True)
-        raise
+        logging.exception(f"An unexpected error occurred: {e}", exc_info=True)
+        raise 1
+
+    logging.info("Script end")
+    return 0
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Read Excel files from a folder and combine, clean, validate, calculate, and summarize the data into a management report.")
     parser.add_argument("-i", "--input-folder", type=str, required=True, help="Folder containing the Excel files to process.")
     parser.add_argument("-o", "--output-file", type=str, required=True, help="File path for management report.")
     args = parser.parse_args()
-    main(args.input_folder, args.output_file)
+    sys.exit(main(args.input_folder, args.output_file))
