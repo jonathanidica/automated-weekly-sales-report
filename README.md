@@ -122,7 +122,7 @@ Provides file-level processing information, including:
 ## Example Output  
 For example:  
 ```
-![Weekly Sales Report Summary](./images/weekly-sales-summary.png)
+![Weekly Sales Report Summary](images/weekly-sales-summary.png)
 
 ```
 A screenshot of the generated report helps demonstrate the business-facing result of the automation without requiring someone to run the project first.  
