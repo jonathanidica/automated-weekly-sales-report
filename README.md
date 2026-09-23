@@ -24,6 +24,7 @@ The automation processes all Excel files in an input directory and:
 7. Calculates sales amounts.  
 8. Generates summary metrics.  
 9. Produces a formatted Excel report.  
+
 **Workflow**  
 ```
 Excel Files
@@ -89,6 +90,7 @@ Weekly_Sales_Report.xlsx
 
 ```
 The report contains four worksheets.  
+
 **Summary**  
 Provides:  
 * Reporting period  
